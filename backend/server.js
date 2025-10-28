@@ -235,8 +235,8 @@ app.get('/api/health', async (req, res) => {
 
 // ==================== RUTAS FRONTEND ====================
 
-// Todas las demás rutas sirven el index.html (para SPA routing)
-app.get('*', (req, res) => {
+// Todas las rutas que NO son /api/* sirven el index.html (para hash routing)
+app.get(/^(?!\/api).*$/, (req, res) => {
   res.sendFile(path.join(__dirname, '../Frontend/index.html'));
 });
 

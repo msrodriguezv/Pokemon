@@ -1,12 +1,23 @@
 [
-    {
-      "id": 1,
-      "username": "admin",
-      "password": "admin123"
-    },
-    {
-      "id": 2,
-      "username": "Salo",
-      "password": "salo123"
-    }
-  ]
+  {
+    "id": 1,
+    "name": "Ash Ketchum",
+    "email": "ash@pokemon.com",
+    "password": "pikachu123",
+    "avatar": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
+  },
+  {
+    "id": 2,
+    "name": "Misty",
+    "email": "misty@pokemon.com",
+    "password": "starmie456",
+    "avatar": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/121.png"
+  },
+  {
+    "id": 3,
+    "name": "Brock",
+    "email": "brock@pokemon.com",
+    "password": "onix789",
+    "avatar": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/95.png"
+  }
+]
