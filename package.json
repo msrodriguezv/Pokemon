@@ -1,0 +1,18 @@
+{
+    "name": "vanilla-js-app",
+    "version": "1.0.0",
+    "type": "module",
+    "description": "Proyecto base en Vanilla JS con rutas y peticiones API usando PostgreSQL.",
+    "scripts": {
+      "dev": "nodemon backend/server.js",
+      "start": "node backend/server.js"
+    },
+    "dependencies": {
+      "cors": "^2.8.5",
+      "express": "^5.1.0",
+      "pg": "^8.12.0"
+    },
+    "devDependencies": {
+      "nodemon": "^3.1.10"
+    }
+  }
