@@ -1,5 +1,6 @@
 // Configuración base de la API
 const API_BASE_URL = 'http://localhost:3000/api';
+const STRAPI_URL = 'http://localhost:1337/api';
 
 // ==================== UTILIDADES ====================
 
@@ -35,34 +36,47 @@ const fetchAPI = async (endpoint, options = {}) => {
 // ==================== AUTENTICACIÓN ====================
 
 /**
- * Login de usuario (simulado con datos locales)
- * @param {string} email - Email del usuario
+ * Login de usuario con Strapi
+ * @param {string} identifier - Email o username del usuario
  * @param {string} password - Contraseña del usuario
- * @returns {Promise<object>} Datos del usuario
+ * @returns {Promise<object>} Datos del usuario y JWT token
  */
-export const loginUser = async (email, password) => {
+export const loginUser = async (identifier, password) => {
   try {
-    // Simulación de login con datos locales
-    // En producción esto debería conectarse a tu API de autenticación
-    const response = await fetch('/public/data/user.json');
-    const users = await response.json();
+    // Llamar al endpoint de autenticación de Strapi
+    const response = await fetch(`${STRAPI_URL}/auth/local`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        identifier: identifier, // Puede ser email o username
+        password: password,
+      }),
+    });
 
-    // Buscar usuario
-    const user = users.find(u => u.email === email && u.password === password);
-
-    if (!user) {
-      throw new Error('Credenciales incorrectas');
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.error?.message || 'Credenciales incorrectas');
     }
+
+    const data = await response.json();
+
+    // Strapi devuelve: { jwt, user }
+    const { jwt, user } = data;
 
     // Guardar en localStorage
     const userData = {
       id: user.id,
-      name: user.name,
+      username: user.username,
       email: user.email,
-      avatar: user.avatar || null,
+      name: user.username, // Usar username como name si no hay campo name
+      avatar: null, // Puedes agregar un campo avatar en Strapi si lo necesitas
+      token: jwt,
     };
 
     localStorage.setItem('user', JSON.stringify(userData));
+    localStorage.setItem('token', jwt);
     localStorage.setItem('isAuthenticated', 'true');
 
     return userData;
@@ -77,8 +91,9 @@ export const loginUser = async (email, password) => {
  */
 export const logoutUser = () => {
   localStorage.removeItem('user');
+  localStorage.removeItem('token');
   localStorage.removeItem('isAuthenticated');
-  window.location.href = '/login';
+  window.location.hash = '#/login';
 };
 
 /**
