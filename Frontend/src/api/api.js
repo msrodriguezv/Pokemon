@@ -1,6 +1,6 @@
 // Configuración base de la API
-const API_BASE_URL = 'http://localhost:3000/api';
-const STRAPI_URL = 'https://successful-frogs-c499e46064.strapiapp.com/admin';
+const API_BASE_URL = 'https://webpoke.onrender.com/api';
+const STRAPI_URL = 'https://pokemon-backend-0ni1.onrender.com/api';
 
 // ==================== UTILIDADES ====================
 
