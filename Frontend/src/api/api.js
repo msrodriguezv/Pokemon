@@ -1,6 +1,6 @@
 // Configuración base de la API
 const API_BASE_URL = 'http://localhost:3000/api';
-const STRAPI_URL = 'http://localhost:1337/api';
+const STRAPI_URL = 'https://successful-frogs-c499e46064.strapiapp.com/admin';
 
 // ==================== UTILIDADES ====================
 
