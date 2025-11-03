@@ -2,7 +2,7 @@ import pg from 'pg';
 
 const { Pool } = pg;
 
-const DATABASE_URL = process.env.DATABASE_URL || 'postgres://pokefy:pokepass@localhost:5432/pokefav';
+const DATABASE_URL = process.env.DATABASE_URL || 'postgresql://pokemon_db_qaws_user:6iMVzdbEUQhvDO8d7J9lxqQVUAtNXbXi@dpg-d44f13vgi27c73bvclj0-a/pokemon_db_qaws';
 
 // Crear pool de conexiones
 const pool = new Pool({
