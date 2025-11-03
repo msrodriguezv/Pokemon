@@ -4,15 +4,15 @@
     "type": "module",
     "description": "Proyecto base en Vanilla JS con rutas y peticiones API usando PostgreSQL.",
     "scripts": {
-      "dev": "nodemon backend/server.js",
-      "start": "node backend/server.js"
+        "dev": "nodemon backend/server.js",
+        "start": "node backend/server.js"
     },
     "dependencies": {
-      "cors": "^2.8.5",
-      "express": "^5.1.0",
-      "pg": "^8.12.0"
+        "cors": "^2.8.5",
+        "express": "^5.1.0",
+        "pg": "^8.16.3"
     },
     "devDependencies": {
-      "nodemon": "^3.1.10"
+        "nodemon": "^3.1.10"
     }
-  }
+}
